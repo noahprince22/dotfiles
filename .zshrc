@@ -4,6 +4,8 @@ export ZSH=$HOME/.oh-my-zsh
 source ~/.profile
 source ~/.bashrc
 
+DOTFILE_HOME=$HOME/dotfiles
+
 # Start up tmux
 # export ZSH_TMUX_AUTOSTART=true
 
@@ -28,13 +30,14 @@ ZSH_THEME="blinks"
 # Aliases to easily edit configuration files that are under version control.
 # The pattern is e (for edit) then the filename dropping the starting dot
 # DOTFILE_HOME default is $HOME/dotfiles.
-DOTFILE_HOME=$HOME/dotfiles
 
 alias ezshrc="vim $DOTFILE_HOME/.zshrc"
 alias evimrc="vim $DOTFILE_HOME/.vimrc"
 alias etmux.conf="vim $DOTFILE_HOME/.tmux.conf"
 alias eeclimrc="vim $DOTFILE_HOME/.eclimrc"
 alias egitignore="vim $DOTFILE_HOME/.gitignore"
+
+alias szshrc="source $DOTFILE_HOME/.zshrc"
 
 alias glc="git ls-files -u"
 alias git-lsu="git ls-files -u | cut -f 2 | sort -u"
@@ -73,7 +76,7 @@ alias check-emacs="ps aux | grep emacs"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx brew common-aliases git-extras jira knife mvn scala tmux)
+plugins=(git osx brew common-aliases git-extras jira knife mvn scala tmux zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -105,4 +108,4 @@ export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
 #THIS MUST BE AT THE END OF THE FILE FOR GVM TO WORK!!!
-[[ -s "/Users/bv031773/.gvm/bin/gvm-init.sh" ]] && source "/Users/bv031773/.gvm/bin/gvm-init.sh"
+# [[ -s "/Users/bv031773/.gvm/bin/gvm-init.sh" ]] && source "/Users/bv031773/.gvm/bin/gvm-init.sh"

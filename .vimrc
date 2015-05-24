@@ -2,7 +2,7 @@ set nocompatible              " be iMproved, required
 filetype off                  " required for Vundle
 
 " set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
+set rtp+=$HOME/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -66,7 +66,7 @@ filetype plugin on
 set modelines=0
 
 " Have VIM use default ruby
-let g:ruby_path="/Users/bv031773/.rvm/rubies/ruby-2.0.0-p353/bin/ruby"
+let g:ruby_path="$HOME/.rvm/rubies/ruby-2.0.0-p353/bin/ruby"
 
 " Point to Python for powerline
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
@@ -228,7 +228,6 @@ hi CtrlSpaceSearch   guifg=#cb4b16 guibg=NONE gui=bold ctermfg=9 ctermbg=NONE te
 " Based on PmenuThumb
 hi CtrlSpaceStatus   guifg=#839496 guibg=#002b36 gui=reverse term=reverse cterm=reverse ctermfg=12 ctermbg=8
 
-
 """"""""""""""""""""""""""""""
 " => Vim-Json
 """"""""""""""""""""""""""""""
@@ -244,7 +243,7 @@ let g:vim_tags_use_language_field=1
 " => Syntastic Checker
 """"""""""""""""""""""""""""""
 " let g:syntastic_java_checkers=['checkstyle']
-" let g:syntastic_java_checkstyle_classpath='/Users/bv031773/checkstyle-5.5/checkstyle-5.5-all.jar'
+" let g:syntastic_java_checkstyle_classpath='$HOME/checkstyle-5.5/checkstyle-5.5-all.jar'
 " let g:syntastic_java_checkstyle_conf_file='sun_checks.xml'
 
 let g:syntastic_cursor_column=0
