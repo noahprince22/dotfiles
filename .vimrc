@@ -14,6 +14,7 @@ Plugin 'gmarik/Vundle.vim'
 " The following are examples of different formats supported.
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-fireplace'
+Plugin 'tpope/vim-leiningen'
 Plugin 'tpope/vim-endwise'
 Plugin 'tpope/vim-rails'
 Plugin 'thoughtbot/vim-rspec'
