@@ -26,7 +26,7 @@ Plugin 'Raimondi/delimitMate'
 Plugin 'SirVer/ultisnips'
 Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
-" Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
 Bundle 'szw/vim-ctrlspace'
 Plugin 'majutsushi/tagbar'
@@ -53,17 +53,27 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'jpalardy/vim-slime'
 
 " Organization
-Plugin 'xolox/vim-notes'
-Plugin 'xolox/vim-misc'
+" Plugin 'xolox/vim-notes'
+" Plugin 'xolox/vim-misc'
+
+" vim-orgmode
+Plugin 'jceb/vim-orgmode'
+Plugin 'NrrwRgn'
+Plugin 'calendar.vim'
+Plugin 'utl.vim'
+Plugin 'speeddating.vim'
 
 " Colors
 Plugin 'altercation/vim-colors-solarized'
+
+" Spotify
+Plugin 'b-boogaard/vim-spotify'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
 " To ignore plugin indent changes, instead use:
-filetype plugin on
+" filetype plugin on
 set modelines=0
 
 " Have VIM use default ruby
@@ -73,7 +83,7 @@ let g:ruby_path="$HOME/.rvm/rubies/ruby-2.0.0-p353/bin/ruby"
 python import sys; sys.path.append("/usr/local/lib/python2.7/site-packages/")
 
 " Point to powerline
-source /Library/Python/2.7/site-packages/Powerline-beta-py2.7.egg/powerline/bindings/vim/plugin/powerline.vim
+source /usr/local/lib/python2.7/site-packages/powerline/bindings/vim/plugin/powerline.vim
 
 " Point to RSense
 let g:rsenseHome="/usr/local/Cellar/rsense/0.3/"
@@ -208,6 +218,16 @@ let g:clojure_highlight_references=1
 let g:slime_target = "tmux"
 let g:slime_default_config = {"socket_name": "default", "target_pane": "1"}
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => vim-orgmode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:org_heading_shade_leading_stars = 1
+let g:org_agenda_files=['$HOME/.org/index.org', '$HOME/.org/main.org']
+let g:org_todo_keywords = [['TODO(t)', '|', 'DONE(d)'],
+      \ ['ASSIGNED(a)', 'PROGRESS(p)', 'REVIEW(r)', 'TECHNICAL(v)', 'FUNCTIONAL(f)', '|', 'RELEASED(e)', 'BLOCKED(b)'],
+      \ ['ISSUE(i)', 'INVESTIGATE(g)', '|', 'RESOLVED(s)'],
+      \ ['CANCELED(c)']]
+
 """"""""""""""""""""""""""""""
 " => CtrlSpace
 """"""""""""""""""""""""""""""
@@ -243,15 +263,17 @@ let g:vim_tags_use_language_field=1
 """"""""""""""""""""""""""""""
 " => Syntastic Checker
 """"""""""""""""""""""""""""""
-" let g:syntastic_java_checkers=['checkstyle']
-" let g:syntastic_java_checkstyle_classpath='$HOME/checkstyle-5.5/checkstyle-5.5-all.jar'
-" let g:syntastic_java_checkstyle_conf_file='sun_checks.xml'
+let g:syntastic_java_checkers=['checkstyle']
+" FIX-ME - need to store this in a more general location
+let g:syntastic_java_checkstyle_classpath='/usr/local/Cellar/checkstyle/5.7/libexec/checkstyle-5.7-all.jar'
+let g:syntastic_java_checkstyle_conf_file='/Users/bv031773/source/work/appservices-styleguide/checkstyle.xml'
 
 let g:syntastic_cursor_column=0
 let g:syntastic_aggregate_errors=1
 let g:syntastic_ruby_checkers=['rubocop']
 let g:syntastic_javascript_checkers=['gjslint']
 let g:syntastic_yaml_checkers=['jsyaml']
+let g:syntastic_python_checkers=['flake8']
 
 let g:syntastic_check_on_open=1
 let g:syntastic_check_on_wq=0
@@ -259,7 +281,7 @@ let g:syntastic_enable_signs=1
 let g:syntastic_auto_loc_list=2
 
 let g:syntastic_mode_map={ "mode": "active",
-                               \ "active_filetypes": ["ruby", "java", "scala", "javascript", "html", "css"],
+                               \ "active_filetypes": ["python", "java", "scala", "javascript", "html", "css"],
                                \ "passive_filetypes": [] }
 
 """"""""""""""""""""""""""""""
@@ -417,8 +439,8 @@ nnoremap <leader>/ :CtrlPBuffer<cr>
 """""""""""""""""""""""""""""""""""""
 " => Useful Mappings
 """""""""""""""""""""""""""""""""""""
-" Remap localleader to `'`
-let maplocalleader="'"
+" Remap localleader to `-`
+let maplocalleader="-"
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>

@@ -6,6 +6,9 @@ source ~/.bashrc
 
 DOTFILE_HOME=$HOME/dotfiles
 
+# Start up pyenv
+eval "$(pyenv init -)"
+
 # Start up tmux
 # export ZSH_TMUX_AUTOSTART=true
 
