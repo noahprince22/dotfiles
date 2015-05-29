@@ -12,6 +12,10 @@ pom.xml.asc
 .lein-plugins/
 .lein-failures
 
+# ctrlspace root directories
+.cs_cache
+.cache-main
+
 ## Elist
 # Compiled
 *.elc

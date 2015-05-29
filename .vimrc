@@ -28,11 +28,14 @@ Plugin 'Lokaltog/vim-easymotion'
 Plugin 'elzr/vim-json'
 Plugin 'scrooloose/syntastic'
 Plugin 'rking/ag.vim'
-Bundle 'szw/vim-ctrlspace'
+Plugin 'szw/vim-ctrlspace'
 Plugin 'majutsushi/tagbar'
 
 " Snippets are separated from the engine.
 Plugin 'honza/vim-snippets'
+
+" Livedown - Markup previewer
+Plugin 'shime/vim-livedown'
 
 " gist-vim
 Plugin 'mattn/webapi-vim'
@@ -61,7 +64,7 @@ Plugin 'jceb/vim-orgmode'
 Plugin 'NrrwRgn'
 Plugin 'calendar.vim'
 Plugin 'utl.vim'
-Plugin 'speeddating.vim'
+Plugin 'tpope/speeddating'
 
 " Colors
 Plugin 'altercation/vim-colors-solarized'
@@ -93,6 +96,7 @@ let mapleader=","
 
 " Set hidden recommended by CtrlSpace.
 set hidden
+let s:workspace_mode = 0
 
 " Enable Folding
 set foldlevel=1
@@ -265,8 +269,8 @@ let g:vim_tags_use_language_field=1
 """"""""""""""""""""""""""""""
 let g:syntastic_java_checkers=['checkstyle']
 " FIX-ME - need to store this in a more general location
-let g:syntastic_java_checkstyle_classpath='/usr/local/Cellar/checkstyle/5.7/libexec/checkstyle-5.7-all.jar'
-let g:syntastic_java_checkstyle_conf_file='/Users/bv031773/source/work/appservices-styleguide/checkstyle.xml'
+let g:syntastic_java_checkstyle_classpath='/usr/local/Cellar/checkstyle/6.4.1/libexec/checkstyle-6.4.1-all.jar'
+let g:syntastic_java_checkstyle_conf_file='/Users/bv031773/checkstyle-checker.xml'
 
 let g:syntastic_cursor_column=0
 let g:syntastic_aggregate_errors=1
@@ -408,14 +412,26 @@ let g:EclimCompletionMethod='omnifunc'
 
 " Eclim disable validation
 let g:EclimFileTypeValidate=0
+let g:EclimJavaValidate=1
+let g:EclimScalaValidate=1
 
 """""""""""""""""""""""""""""""""""""
 " => Utilsnips
 """""""""""""""""""""""""""""""""""""
 "Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<C-u>"
-let g:UltiSnipsJumpForwardTrigger="<C-b>"
-let g:UltiSnipsJumpBackwardTrigger="<C-z>"
+let g:ulti_expand_or_jump_res = 0
+function ExpandSnippetOrCarriageReturn()
+    let snippet = UltiSnips#ExpandSnippetOrJump()
+    if g:ulti_expand_or_jump_res > 0
+        return snippet
+    else
+        return "\<CR>"
+    endif
+endfunction
+inoremap <expr> <CR> pumvisible() ? "<C-R>=ExpandSnippetOrCarriageReturn()<CR>" : "\<CR>"
+" let g:UltiSnipsExpandTrigger="<CR>"
+" let g:UltiSnipsJumpForwardTrigger="<C-b>"
+" let g:UltiSnipsJumpBackwardTrigger="<C-z>"
 
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
@@ -429,12 +445,18 @@ map <leader>pt :ProjectTree<cr>
 " => Tabbar Mappings
 """""""""""""""""""""""""""""""""""""
 nnoremap <silent> <leader>b :TagbarToggle<cr>
+let g:tagbar_autoclose = 1
 
 """""""""""""""""""""""""""""""""""""
-" => CtrlP Mappings
+" => CtrlP Mappings and Config
 """""""""""""""""""""""""""""""""""""
 nnoremap <leader>. :CtrlPTag<cr>
 nnoremap <leader>/ :CtrlPBuffer<cr>
+
+" let g:ctrlp_working_path_mode ='rc'
+let g:ctrlp_root_markers = '.cache-main, .project'
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip
+let g:ctrlp_custom_ignore = '\v[\/]\.(git|hg|svn)$'
 
 """""""""""""""""""""""""""""""""""""
 " => Useful Mappings
